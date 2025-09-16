@@ -1,0 +1,8 @@
+E:\CryptoCourse\CryptoCourse\bin\Debug\CryptoCourse.exe.config
+E:\CryptoCourse\CryptoCourse\obj\Debug\CryptoCourse.csprojResolveAssemblyReference.cache
+E:\CryptoCourse\CryptoCourse\obj\Debug\CryptoCourse.Properties.Resources.resources
+E:\CryptoCourse\CryptoCourse\obj\Debug\CryptoCourse.csproj.GenerateResource.Cache
+E:\CryptoCourse\CryptoCourse\bin\Debug\CryptoCourse.exe
+E:\CryptoCourse\CryptoCourse\bin\Debug\CryptoCourse.pdb
+E:\CryptoCourse\CryptoCourse\obj\Debug\CryptoCourse.exe
+E:\CryptoCourse\CryptoCourse\obj\Debug\CryptoCourse.pdb
