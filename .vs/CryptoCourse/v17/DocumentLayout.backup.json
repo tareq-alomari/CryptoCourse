@@ -1,0 +1,268 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\winformsui\\controls\\playfairpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\winformsui\\controls\\playfairpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|d:\\programminglanguage\\desktop\\cryptocourse\\cryptocourse\\winformsui\\controls\\affinepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\winformsui\\controls\\affinepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|d:\\programminglanguage\\desktop\\cryptocourse\\cryptocourse\\winformsui\\controls\\caesarpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\winformsui\\controls\\caesarpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|d:\\programminglanguage\\desktop\\cryptocourse\\cryptocourse\\winformsui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\winformsui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\winformsui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\winformsui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\core\\algorithms\\classical\\playfaircipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\core\\algorithms\\classical\\playfaircipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\winformsui\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\winformsui\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\winformsui\\controls\\playfairpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\winformsui\\controls\\playfairpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\core\\algorithms\\classical\\hillcipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\core\\algorithms\\classical\\hillcipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\core\\algorithms\\classical\\affinecipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\core\\algorithms\\classical\\affinecipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\winformsui\\controls\\vigenerepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\winformsui\\controls\\vigenerepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\core\\algorithms\\classical\\vigenerecipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\core\\algorithms\\classical\\vigenerecipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\core\\algorithms\\classical\\caesarcipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\core\\algorithms\\classical\\caesarcipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\cryptocourse\\winformsui\\controls\\pipelinepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53847C41-26FB-43A7-BE2B-0F0EA2369E6F}|CryptoCourse\\CryptoCourse.csproj|solutionrelative:cryptocourse\\winformsui\\controls\\pipelinepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AffinePanel.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\AffinePanel.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\WinFormsUI\\Controls\\AffinePanel.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\AffinePanel.cs",
+              "RelativeToolTip": "CryptoCourse\\WinFormsUI\\Controls\\AffinePanel.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwBkAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T01:10:00.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CaesarPanel.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\CaesarPanel.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\WinFormsUI\\Controls\\CaesarPanel.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\CaesarPanel.cs",
+              "RelativeToolTip": "CryptoCourse\\WinFormsUI\\Controls\\CaesarPanel.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAuwDcAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T01:03:07.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayfairCipher.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\PlayfairCipher.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\Core\\Algorithms\\Classical\\PlayfairCipher.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\PlayfairCipher.cs",
+              "RelativeToolTip": "CryptoCourse\\Core\\Algorithms\\Classical\\PlayfairCipher.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAkwK0AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:51:14.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "VigenerePanel.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\VigenerePanel.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\WinFormsUI\\Controls\\VigenerePanel.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\VigenerePanel.cs",
+              "RelativeToolTip": "CryptoCourse\\WinFormsUI\\Controls\\VigenerePanel.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAgwCwAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T13:56:45.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "VigenereCipher.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\VigenereCipher.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\Core\\Algorithms\\Classical\\VigenereCipher.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\VigenereCipher.cs",
+              "RelativeToolTip": "CryptoCourse\\Core\\Algorithms\\Classical\\VigenereCipher.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAADcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T13:55:22.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\MainForm.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\WinFormsUI\\MainForm.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\MainForm.cs [Design]",
+              "RelativeToolTip": "CryptoCourse\\WinFormsUI\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T13:48:31.597Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\MainForm.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\WinFormsUI\\MainForm.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\MainForm.cs",
+              "RelativeToolTip": "CryptoCourse\\WinFormsUI\\MainForm.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAgwEIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T12:09:41.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayfairPanel.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\PlayfairPanel.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\WinFormsUI\\Controls\\PlayfairPanel.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\PlayfairPanel.cs",
+              "RelativeToolTip": "CryptoCourse\\WinFormsUI\\Controls\\PlayfairPanel.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:54:26.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\WinFormsUI\\MainForm.Designer.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\MainForm.Designer.cs",
+              "RelativeToolTip": "CryptoCourse\\WinFormsUI\\MainForm.Designer.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAQwCkAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T12:09:07.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AffineCipher.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\AffineCipher.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\Core\\Algorithms\\Classical\\AffineCipher.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\AffineCipher.cs",
+              "RelativeToolTip": "CryptoCourse\\Core\\Algorithms\\Classical\\AffineCipher.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAE8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:05:01.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HillCipher.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\HillCipher.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\Core\\Algorithms\\Classical\\HillCipher.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\HillCipher.cs",
+              "RelativeToolTip": "CryptoCourse\\Core\\Algorithms\\Classical\\HillCipher.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAIwGgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:16:20.501Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PlayfairPanel.cs [Design]",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\PlayfairPanel.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\WinFormsUI\\Controls\\PlayfairPanel.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\PlayfairPanel.cs [Design]",
+              "RelativeToolTip": "CryptoCourse\\WinFormsUI\\Controls\\PlayfairPanel.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T14:54:06.385Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CaesarCipher.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\CaesarCipher.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\Core\\Algorithms\\Classical\\CaesarCipher.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\Core\\Algorithms\\Classical\\CaesarCipher.cs",
+              "RelativeToolTip": "CryptoCourse\\Core\\Algorithms\\Classical\\CaesarCipher.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T13:50:57.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PipelinePanel.cs",
+              "DocumentMoniker": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\PipelinePanel.cs",
+              "RelativeDocumentMoniker": "CryptoCourse\\WinFormsUI\\Controls\\PipelinePanel.cs",
+              "ToolTip": "D:\\ProgrammingLanguage\\Desktop\\CryptoCourse\\CryptoCourse\\WinFormsUI\\Controls\\PipelinePanel.cs",
+              "RelativeToolTip": "CryptoCourse\\WinFormsUI\\Controls\\PipelinePanel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T12:38:13.597Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

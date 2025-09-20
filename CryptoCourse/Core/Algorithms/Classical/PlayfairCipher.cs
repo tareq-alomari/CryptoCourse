@@ -1,174 +1,180 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CryptoCourse.Core.Algorithms.Classical
 {
     public static class PlayfairCipher
     {
-        // تعريف struct بدلاً من tuple
-        private struct Position
-        {
-            public int Row;
-            public int Col;
-            public Position(int row, int col)
-            {
-                Row = row;
-                Col = col;
-            }
-        }
+        // Define the standardized alphabets
+        private const string EnglishAlphabet = "abcdefghiklmnopqrstuvwxyz"; // No 'j'
+        private const string ArabicAlphabet = "ابتثجحخدذرزسشصضطظعغفقكلمنهوي";
 
-        // Helper method to generate the 5x5 key matrix
-        private static char[,] GenerateMatrix(string key)
+        // A class to hold the context for a given language
+        private class PlayfairContext
         {
-            var matrix = new char[5, 5];
-            var keyString = new StringBuilder();
-            var usedChars = new HashSet<char>();
+            public char[,] Matrix { get; }
+            public int Rows { get; }
+            public int Cols { get; }
 
-            // Sanitize key: uppercase, replace J with I, and add unique chars
-            key = key.ToUpper().Replace("J", "I");
-            foreach (char c in key)
+            public PlayfairContext(string key, bool isArabic)
             {
-                if (char.IsLetter(c) && usedChars.Add(c))
+                if (isArabic)
                 {
-                    keyString.Append(c);
+                    Rows = 4;
+                    Cols = 7;
+                    Matrix = GenerateMatrix(key, ArabicAlphabet);
+                }
+                else
+                {
+                    Rows = 5;
+                    Cols = 5;
+                    Matrix = GenerateMatrix(key, EnglishAlphabet);
                 }
             }
 
-            // Add the rest of the alphabet (excluding 'J')
-            for (char c = 'A'; c <= 'Z'; c++)
+            private char[,] GenerateMatrix(string key, string alphabet)
             {
-                if (c != 'J' && usedChars.Add(c))
-                {
-                    keyString.Append(c);
-                }
-            }
+                var matrix = new char[Rows, Cols];
+                var keyString = new StringBuilder();
+                var usedChars = new HashSet<char>();
 
-            // Populate the 5x5 matrix
-            int index = 0;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 5; j++)
+                // FIX 1: Normalize key and add unique characters
+                foreach (char c in NormalizeText(key, IsArabic()))
                 {
-                    matrix[i, j] = keyString[index++];
-                }
-            }
-            return matrix;
-        }
-
-        // Helper method to find the row and column of a character
-        private static Position FindPosition(char[,] matrix, char c)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
-                    if (matrix[i, j] == c)
+                    if (usedChars.Add(c))
                     {
-                        return new Position(i, j);
+                        keyString.Append(c);
+                    }
+                }
+
+                // Add the rest of the alphabet
+                foreach (char c in alphabet)
+                {
+                    if (usedChars.Add(c))
+                    {
+                        keyString.Append(c);
+                    }
+                }
+
+                int index = 0;
+                for (int i = 0; i < Rows; i++)
+                {
+                    for (int j = 0; j < Cols; j++)
+                    {
+                        matrix[i, j] = keyString[index++];
+                    }
+                }
+                return matrix;
+            }
+
+            public (int row, int col) FindPosition(char c)
+            {
+                for (int i = 0; i < Rows; i++)
+                    for (int j = 0; j < Cols; j++)
+                        if (Matrix[i, j] == c) return (i, j);
+                return (-1, -1);
+            }
+
+            public bool IsArabic() => Rows == 4;
+        }
+
+        // FIX 2: Create a normalization function for all text
+        private static string NormalizeText(string text, bool isArabic)
+        {
+            var sb = new StringBuilder();
+            text = text.ToLower();
+
+            if (isArabic)
+            {
+                foreach (char c in text)
+                {
+                    char normalizedChar = c;
+                    if ("آأإ".Contains(c)) normalizedChar = 'ا';
+                    if (c == 'ة') normalizedChar = 'ت';
+                    if (c == 'ى') normalizedChar = 'ي';
+
+                    if (ArabicAlphabet.Contains(normalizedChar))
+                    {
+                        sb.Append(normalizedChar);
                     }
                 }
             }
-            return new Position(-1, -1); // Should not happen with valid input
-        }
-
-        // Helper method to prepare the text into digraphs
-        private static string PrepareText(string text)
-        {
-            var sb = new StringBuilder();
-            text = text.ToUpper().Replace("J", "I");
-
-            // Remove non-alphabetic characters
-            foreach (char c in text)
+            else // English
             {
-                if (char.IsLetter(c))
+                foreach (char c in text)
                 {
-                    sb.Append(c);
+                    char normalizedChar = c;
+                    if (c == 'j') normalizedChar = 'i';
+
+                    if (EnglishAlphabet.Contains(normalizedChar))
+                    {
+                        sb.Append(normalizedChar);
+                    }
                 }
             }
+            return sb.ToString();
+        }
 
-            // Insert 'X' between duplicate letters in a pair
+        private static string PrepareText(string normalizedText, bool isArabic)
+        {
+            var sb = new StringBuilder(normalizedText);
+            char padChar = isArabic ? 'ي' : 'x';
+
             for (int i = 0; i < sb.Length - 1; i += 2)
             {
                 if (sb[i] == sb[i + 1])
                 {
-                    sb.Insert(i + 1, 'X');
+                    sb.Insert(i + 1, padChar);
                 }
             }
 
-            // If the length is odd, append an 'X'
             if (sb.Length % 2 != 0)
             {
-                sb.Append('X');
+                sb.Append(padChar);
             }
-
             return sb.ToString();
         }
 
-        // Main Encryption Method
-        public static string Encrypt(string plaintext, string key)
+        private static string Process(string text, string key, bool isEncrypt)
         {
-            var matrix = GenerateMatrix(key);
-            var preparedText = PrepareText(plaintext);
-            var ciphertext = new StringBuilder();
+            if (string.IsNullOrEmpty(text)) return "";
+            bool isArabic = ArabicAlphabet.Contains(text.ToLower()[0]);
+            var context = new PlayfairContext(key, isArabic);
 
-            for (int i = 0; i < preparedText.Length; i += 2)
+            string inputText = isEncrypt ? PrepareText(NormalizeText(text, isArabic), isArabic) : NormalizeText(text, isArabic);
+            var result = new StringBuilder();
+
+            for (int i = 0; i < inputText.Length; i += 2)
             {
-                char a = preparedText[i];
-                char b = preparedText[i + 1];
-                var posA = FindPosition(matrix, a);
-                var posB = FindPosition(matrix, b);
+                var posA = context.FindPosition(inputText[i]);
+                var posB = context.FindPosition(inputText[i + 1]);
 
-                if (posA.Row == posB.Row) // Same row
+                if (posA.row == -1 || posB.row == -1) continue; // Should not happen with normalization
+
+                int dir = isEncrypt ? 1 : -1;
+
+                if (posA.row == posB.row) // Same row
                 {
-                    ciphertext.Append(matrix[posA.Row, (posA.Col + 1) % 5]);
-                    ciphertext.Append(matrix[posB.Row, (posB.Col + 1) % 5]);
+                    result.Append(context.Matrix[posA.row, (posA.col + dir + context.Cols) % context.Cols]);
+                    result.Append(context.Matrix[posB.row, (posB.col + dir + context.Cols) % context.Cols]);
                 }
-                else if (posA.Col == posB.Col) // Same column
+                else if (posA.col == posB.col) // Same column
                 {
-                    ciphertext.Append(matrix[(posA.Row + 1) % 5, posA.Col]);
-                    ciphertext.Append(matrix[(posB.Row + 1) % 5, posB.Col]);
+                    result.Append(context.Matrix[(posA.row + dir + context.Rows) % context.Rows, posA.col]);
+                    result.Append(context.Matrix[(posB.row + dir + context.Rows) % context.Rows, posB.col]);
                 }
                 else // Rectangle
                 {
-                    ciphertext.Append(matrix[posA.Row, posB.Col]);
-                    ciphertext.Append(matrix[posB.Row, posA.Col]);
+                    result.Append(context.Matrix[posA.row, posB.col]);
+                    result.Append(context.Matrix[posB.row, posA.col]);
                 }
             }
-            return ciphertext.ToString();
+            return result.ToString();
         }
 
-        // Main Decryption Method
-        public static string Decrypt(string ciphertext, string key)
-        {
-            var matrix = GenerateMatrix(key);
-            var plaintext = new StringBuilder();
-            ciphertext = ciphertext.ToUpper().Replace("J", "I");
-
-            for (int i = 0; i < ciphertext.Length; i += 2)
-            {
-                char a = ciphertext[i];
-                char b = ciphertext[i + 1];
-                var posA = FindPosition(matrix, a);
-                var posB = FindPosition(matrix, b);
-
-                if (posA.Row == posB.Row) // Same row
-                {
-                    plaintext.Append(matrix[posA.Row, (posA.Col + 4) % 5]); // +4 is equivalent to -1
-                    plaintext.Append(matrix[posB.Row, (posB.Col + 4) % 5]);
-                }
-                else if (posA.Col == posB.Col) // Same column
-                {
-                    plaintext.Append(matrix[(posA.Row + 4) % 5, posA.Col]);
-                    plaintext.Append(matrix[(posB.Row + 4) % 5, posB.Col]);
-                }
-                else // Rectangle
-                {
-                    plaintext.Append(matrix[posA.Row, posB.Col]);
-                    plaintext.Append(matrix[posB.Row, posA.Col]);
-                }
-            }
-            return plaintext.ToString();
-        }
+        public static string Encrypt(string plaintext, string key) => Process(plaintext, key, true);
+        public static string Decrypt(string ciphertext, string key) => Process(ciphertext, key, false);
     }
 }

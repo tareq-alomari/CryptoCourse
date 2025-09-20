@@ -53,8 +53,8 @@ namespace CryptoCourse.WinFormsUI.Controls
 
             // Buttons
             var buttonPanel = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.LeftToRight };
-            _encryptButton = new Button { Text = "تشفير", Width = 100 };
-            _decryptButton = new Button { Text = "فك التشفير", Width = 100 };
+            _encryptButton = new Button { Text = "تشفير", Width = 100  , Height = 30};
+            _decryptButton = new Button { Text = "فك التشفير", Width = 100, Height = 30 };
             buttonPanel.Controls.Add(_encryptButton);
             buttonPanel.Controls.Add(_decryptButton);
             layout.Controls.Add(buttonPanel, 1, 3);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using CryptoCourse.Utils;
 
@@ -6,25 +7,40 @@ namespace CryptoCourse.Core.Algorithms.Classical
 {
     public static class HillCipher
     {
-        private const int AlphabetSize = 26;
+        private const string EnglishAlphabet = "abcdefghijklmnopqrstuvwxyz";
+        private const string ArabicAlphabet = "ابتثجحخدذرزسشصضطظعغفقكلمنهوي";
 
-        private static int[,] CreateKeyMatrix(string key)
+        // FIX 1: Helper function to detect language and return the correct alphabet
+        private static string GetAlphabet(char c, out int modulus)
         {
-            int len = key.Length;
-            int m = (int)Math.Sqrt(len);
-            if (m * m != len)
+            if (ArabicAlphabet.Contains(char.ToLower(c)))
             {
-                throw new ArgumentException("Key length must be a perfect square (4, 9, 16, etc.).");
+                modulus = ArabicAlphabet.Length;
+                return ArabicAlphabet;
             }
+            if (char.IsLetter(c))
+            {
+                modulus = EnglishAlphabet.Length;
+                return EnglishAlphabet;
+            }
+            modulus = 0;
+            return null;
+        }
 
-            int[,] matrix = new int[m, m];
+        private static int[,] CreateKeyMatrix(string key, string alphabet)
+        {
+            int m = (int)Math.Sqrt(key.Length);
+            if (m * m != key.Length) throw new ArgumentException("طول المفتاح يجب أن يكون مربعًا كاملاً.");
+
+            var matrix = new int[m, m];
             int k = 0;
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < m; j++)
                 {
-                    matrix[i, j] = (key.ToUpper()[k]) - 'A';
-                    k++;
+                    int index = alphabet.IndexOf(char.ToLower(key[k++]));
+                    if (index == -1) throw new ArgumentException($"المفتاح يحتوي على حروف غير موجودة في الأبجدية.");
+                    matrix[i, j] = index;
                 }
             }
             return matrix;
@@ -32,30 +48,45 @@ namespace CryptoCourse.Core.Algorithms.Classical
 
         private static string Process(string text, string key, bool isEncrypt)
         {
-            int[,] keyMatrix = CreateKeyMatrix(key);
-            int m = keyMatrix.GetLength(0);
+            if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(key)) return text;
 
-            // For decryption, we need the inverse of the key matrix
-            int[,] processMatrix = isEncrypt ? keyMatrix : MatrixHelper.InverseMatrix(keyMatrix, AlphabetSize);
-
-            // Pad the text with 'X' to be a multiple of m
-            while (text.Length % m != 0)
-            {
-                text += 'X';
-            }
+            int m = (int)Math.Sqrt(key.Length);
+            if (m * m != key.Length) throw new ArgumentException("طول المفتاح يجب أن يكون مربعًا كاملاً.");
 
             var result = new StringBuilder();
-            text = text.ToUpper();
 
             for (int i = 0; i < text.Length; i += m)
             {
-                int[] vector = new int[m];
-                for (int j = 0; j < m; j++)
+                string block = text.Substring(i, Math.Min(m, text.Length - i));
+
+                // Determine language from the first character of the block
+                var alphabet = GetAlphabet(block[0], out int modulus);
+                if (alphabet == null) // If block starts with a non-alphabetic char, skip it
                 {
-                    vector[j] = text[i + j] - 'A';
+                    result.Append(block);
+                    continue;
                 }
 
-                int[] resultVector = new int[m];
+                // FIX 2: Pad the block if it's shorter than m, using a letter from the correct alphabet
+                while (block.Length < m)
+                {
+                    block += (alphabet == ArabicAlphabet) ? 'ي' : 'X';
+                }
+
+                // Create matrices and vectors using the detected alphabet
+                var keyMatrix = CreateKeyMatrix(key, alphabet);
+                var processMatrix = isEncrypt ? keyMatrix : MatrixHelper.InverseMatrix(keyMatrix, modulus);
+
+                var vector = new int[m];
+                var resultVector = new int[m];
+                bool[] isUpper = new bool[m]; // Keep track of original case
+
+                for (int j = 0; j < m; j++)
+                {
+                    isUpper[j] = char.IsUpper(block[j]);
+                    vector[j] = alphabet.IndexOf(char.ToLower(block[j]));
+                }
+
                 for (int row = 0; row < m; row++)
                 {
                     int sum = 0;
@@ -63,14 +94,17 @@ namespace CryptoCourse.Core.Algorithms.Classical
                     {
                         sum += processMatrix[row, col] * vector[col];
                     }
-                    resultVector[row] = MathHelper.Mod(sum, AlphabetSize);
+                    resultVector[row] = MathHelper.Mod(sum, modulus);
                 }
 
-                foreach (int val in resultVector)
+                for (int j = 0; j < m; j++)
                 {
-                    result.Append((char)(val + 'A'));
+                    char processedChar = alphabet[resultVector[j]];
+                    // FIX 3: Restore the original case for English letters
+                    result.Append(isUpper[j] && alphabet == EnglishAlphabet ? char.ToUpper(processedChar) : processedChar);
                 }
             }
+
             return result.ToString();
         }
 

@@ -1,4 +1,4 @@
-﻿using CryptoCourse.Utils; // Import our new helper library
+﻿using CryptoCourse.Utils; // Import our helper library
 using System;
 using System.Text;
 
@@ -6,23 +6,32 @@ namespace CryptoCourse.Core.Algorithms.Classical
 {
     public static class AffineCipher
     {
-        private const int AlphabetSize = 26;
+        private const string EnglishAlphabet = "abcdefghijklmnopqrstuvwxyz";
+        private const string ArabicAlphabet = "ابتثجحخدذرزسشصضطظعغفقكلمنهوي";
 
         public static string Encrypt(string plainText, int a, int b)
         {
-            if (MathHelper.Gcd(a, AlphabetSize) != 1)
-            {
-                throw new ArgumentException($"Key 'a' ({a}) must be coprime with {AlphabetSize}.");
-            }
-
             var result = new StringBuilder();
             foreach (char c in plainText)
             {
-                if (char.IsLetter(c))
+                int arabicIndex = ArabicAlphabet.IndexOf(char.ToLower(c));
+                if (arabicIndex != -1) // Arabic character
                 {
+                    if (MathHelper.Gcd(a, ArabicAlphabet.Length) != 1)
+                        throw new ArgumentException($"المفتاح 'a' ({a}) يجب ألا يكون له قواسم مشتركة مع حجم الأبجدية العربية ({ArabicAlphabet.Length}).");
+
+                    int p = arabicIndex;
+                    int encrypted = (a * p + b) % ArabicAlphabet.Length;
+                    result.Append(ArabicAlphabet[encrypted]);
+                }
+                else if (char.IsLetter(c)) // English character
+                {
+                    if (MathHelper.Gcd(a, EnglishAlphabet.Length) != 1)
+                        throw new ArgumentException($"المفتاح 'a' ({a}) يجب ألا يكون له قواسم مشتركة مع حجم الأبجدية الإنجليزية ({EnglishAlphabet.Length}).");
+
                     char offset = char.IsUpper(c) ? 'A' : 'a';
                     int p = c - offset;
-                    int encrypted = (a * p + b) % AlphabetSize;
+                    int encrypted = (a * p + b) % EnglishAlphabet.Length;
                     result.Append((char)(encrypted + offset));
                 }
                 else
@@ -35,22 +44,29 @@ namespace CryptoCourse.Core.Algorithms.Classical
 
         public static string Decrypt(string cipherText, int a, int b)
         {
-            if (MathHelper.Gcd(a, AlphabetSize) != 1)
-            {
-                throw new ArgumentException($"Key 'a' ({a}) must be coprime with {AlphabetSize} to be invertible.");
-            }
-
-            int a_inv = MathHelper.ModInverse(a, AlphabetSize);
             var result = new StringBuilder();
-
             foreach (char c in cipherText)
             {
-                if (char.IsLetter(c))
+                int arabicIndex = ArabicAlphabet.IndexOf(char.ToLower(c));
+                if (arabicIndex != -1) // Arabic character
                 {
+                    if (MathHelper.Gcd(a, ArabicAlphabet.Length) != 1)
+                        throw new ArgumentException($"المفتاح 'a' ({a}) غير صالح لفك التشفير.");
+
+                    int a_inv = MathHelper.ModInverse(a, ArabicAlphabet.Length);
+                    int ct = arabicIndex;
+                    int decrypted = MathHelper.Mod(a_inv * (ct - b), ArabicAlphabet.Length);
+                    result.Append(ArabicAlphabet[decrypted]);
+                }
+                else if (char.IsLetter(c)) // English character
+                {
+                    if (MathHelper.Gcd(a, EnglishAlphabet.Length) != 1)
+                        throw new ArgumentException($"المفتاح 'a' ({a}) غير صالح لفك التشفير.");
+
+                    int a_inv = MathHelper.ModInverse(a, EnglishAlphabet.Length);
                     char offset = char.IsUpper(c) ? 'A' : 'a';
                     int ct = c - offset;
-                    // Use our custom Mod function to handle potential negative numbers from (ct - b)
-                    int decrypted = MathHelper.Mod(a_inv * (ct - b), AlphabetSize);
+                    int decrypted = MathHelper.Mod(a_inv * (ct - b), EnglishAlphabet.Length);
                     result.Append((char)(decrypted + offset));
                 }
                 else

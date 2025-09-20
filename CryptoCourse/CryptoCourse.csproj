@@ -9,9 +9,26 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CryptoCourse</RootNamespace>
     <AssemblyName>CryptoCourse</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\ProgrammingLanguage\Desktop\CryptoCourse\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +48,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>287B37FBDE3948D7A2678B1CC9263C4BAB196E0D</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CryptoCourse_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,6 +83,7 @@
     <Compile Include="Core\Algorithms\Classical\RailFenceCipher.cs" />
     <Compile Include="Core\Algorithms\Classical\ReverseBlocksCipher.cs" />
     <Compile Include="Core\Algorithms\Classical\ReverseTextCipher.cs" />
+    <Compile Include="Core\Algorithms\Classical\VigenereCipher.cs" />
     <Compile Include="Core\Algorithms\Modern\SecureWrappers\AesWrapper.cs" />
     <Compile Include="Core\Algorithms\Modern\SecureWrappers\RsaWrapper.cs" />
     <Compile Include="Utils\MathHelper.cs" />
@@ -73,6 +103,9 @@
     <Compile Include="WinFormsUI\Controls\HillPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WinFormsUI\Controls\PipelinePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WinFormsUI\Controls\PlayfairPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -86,6 +119,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WinFormsUI\Controls\RsaPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinFormsUI\Controls\VigenerePanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WinFormsUI\MainForm.cs">
@@ -104,7 +140,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WinFormsUI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="CryptoCourse_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,6 +162,18 @@
   <ItemGroup>
     <Folder Include="Core\Interfaces\" />
     <Folder Include="Tests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

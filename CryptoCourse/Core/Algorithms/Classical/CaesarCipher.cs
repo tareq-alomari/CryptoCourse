@@ -1,42 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace CryptoCourse.Core.Algorithms.Classical
 {
     public static class CaesarCipher
     {
-        /// <summary>
-        /// Encrypts or decrypts text using the Caesar cipher method.
-        /// </summary>
-        /// <param name="text">The input text (plaintext or ciphertext).</param>
-        /// <param name="key">The integer shift key. Use a negative key for decryption.</param>
-        /// <returns>The processed text.</returns>
         public static string Process(string text, int key)
         {
-            // A StringBuilder is more efficient for building strings in a loop
-            var result = new System.Text.StringBuilder();
+            // Define both alphabets as constants
+            const string EnglishAlphabet = "abcdefghijklmnopqrstuvwxyz";
+            // As per the textbook, we define the Arabic alphabet
+            const string ArabicAlphabet = "ابتثجحخدذرزسشصضطظعغفقكلمنهوي";
+
+            var result = new StringBuilder();
 
             foreach (char c in text)
             {
-                if (char.IsLetter(c))
+                // First, check if the character is Arabic
+                int arabicIndex = ArabicAlphabet.IndexOf(char.ToLower(c));
+
+                if (arabicIndex != -1)
                 {
-                    // Determine the base character ('A' for uppercase, 'a' for lowercase)
+                    // It's an Arabic letter, apply the shift using Arabic alphabet size
+                    int newIndex = (arabicIndex + key) % ArabicAlphabet.Length;
+                    if (newIndex < 0) newIndex += ArabicAlphabet.Length;
+                    result.Append(ArabicAlphabet[newIndex]);
+                }
+                else if (char.IsLetter(c)) // If not Arabic, check if it's an English letter
+                {
+                    // It's an English letter, use the original logic
                     char offset = char.IsUpper(c) ? 'A' : 'a';
-                    // Apply the shift formula
                     int shifted = (c - offset + key) % 26;
-                    // Handle negative results for decryption
-                    if (shifted < 0)
-                    {
-                        shifted += 26;
-                    }
+                    if (shifted < 0) shifted += 26;
                     result.Append((char)(shifted + offset));
                 }
                 else
                 {
-                    // If the character is not a letter, keep it as is
+                    // It's a number, symbol, or space, so keep it as is
                     result.Append(c);
                 }
             }

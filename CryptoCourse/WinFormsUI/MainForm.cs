@@ -1,7 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
-using CryptoCourse.WinFormsUI.Controls;
-using System;
+using CryptoCourse.WinFormsUI.Controls; // تأكد من أن هذا الـ namespace صحيح لمشروعك
 
 namespace CryptoCourse.WinFormsUI
 {
@@ -11,90 +11,138 @@ namespace CryptoCourse.WinFormsUI
     /// </summary>
     public partial class MainForm : Form
     {
-        // This is the constructor. It runs once when the form is created.
-        // We will define all our window's properties and controls here.
         // Define the main UI layout components as private fields
         private TableLayoutPanel _mainLayout;
         private ComboBox _algorithmSelector;
-        private Panel _contentPanel; // This panel will host the specific cipher's UI
+        private Panel _contentPanel;
 
         public MainForm()
         {
-            // 1. Set basic window properties
-            this.Text = "مجموعة أدوات التشفير - Crypto-Toolkit"; // The title bar text
-            this.Width = 800;                                 // Window width in pixels
-            this.Height = 600;                                // Window height in pixels
-            this.StartPosition = FormStartPosition.CenterScreen; // Start the window in the center of the screen
-            this.BackColor = Color.WhiteSmoke;                // Set a light gray background color
-            this.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            // --- 1. Professional Color Palette ---
+            var backColorDark = Color.FromArgb(37, 37, 38);       // لون الخلفية الرئيسي
+            var panelColorMedium = Color.FromArgb(45, 45, 48);   // لون اللوحات الداخلية
+            var textColorLight = Color.FromArgb(241, 241, 241);    // لون النص
+            var accentColorBlue = Color.FromArgb(0, 122, 204);     // لون التمييز (الأزرق)
+            var borderColor = Color.FromArgb(63, 63, 70);        // لون الحدود
 
+            // --- 2. Set modern window properties ---
+            this.Text = "Crypto-Toolkit | مجموعة أدوات التشفير";
+            this.Width = 900;
+            this.Height = 700;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.MinimumSize = new Size(850, 650);
+            this.BackColor = backColorDark;
+            this.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = textColorLight;
 
+            // --- 3. Main Layout: Header, Content, Footer ---
             _mainLayout = new TableLayoutPanel
             {
-                Dock = DockStyle.Fill, // Make the panel fill the entire window
-                Padding = new Padding(10),
-                ColumnCount = 1,
-                RowCount = 2
-            };
-            var topPanel = new FlowLayoutPanel
-            {
                 Dock = DockStyle.Fill,
-                FlowDirection = FlowDirection.LeftToRight // Arrange controls from left to right
+                Padding = new Padding(15),
+                ColumnCount = 1,
+                RowCount = 3 // Header, Content, Footer
             };
+            // Row 0: Header (fixed height)
+            _mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            // Row 1: Content (takes remaining space)
+            _mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            // Row 2: Footer (fixed height)
+            _mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            this.Controls.Add(_mainLayout);
 
+            // --- 4. Header Panel Setup ---
+            var headerPanel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(5) };
             var selectorLabel = new Label
             {
-                Text = "اختر الخوارزمية:",
+                Text = "اختر خوارزمية التشفير:",
+                ForeColor = textColorLight,
+                Location = new Point(5, 17),
                 AutoSize = true,
-                Padding = new Padding(0, 6, 0, 0) // Align text vertically
+                Font = new Font("Segoe UI", 12F, FontStyle.Bold)
             };
-
             _algorithmSelector = new ComboBox
             {
-                DropDownStyle = ComboBoxStyle.DropDownList, // Prevents user from typing custom text
-                Width = 250
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Width = 300,
+                Location = new Point(220, 15),
+                BackColor = panelColorMedium,
+                ForeColor = textColorLight,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 11F)
             };
+            headerPanel.Controls.Add(selectorLabel);
+            headerPanel.Controls.Add(_algorithmSelector);
+            _mainLayout.Controls.Add(headerPanel, 0, 0);
 
+            // --- 5. Content Panel Setup ---
             _contentPanel = new Panel
             {
                 Dock = DockStyle.Fill,
-                BorderStyle = BorderStyle.FixedSingle, // Add a border to make it visible
-                BackColor = Color.White
+                BackColor = panelColorMedium,
+                Padding = new Padding(10)
+                // We removed the ugly border and now use background color for separation.
             };
-
-            // Populate the ComboBox with the ciphers we will implement
-            _algorithmSelector.Items.AddRange(new string[] {
-        "Caesar Cipher",
-        "Playfair Cipher",
-        "Affine Cipher",
-         "Hill Cipher",
-         "Rail Fence Cipher",
-          "Reverse Text", // <-- أضف هذا
-         "Columnar Transposition", // <-- وهذا
-         "Reverse Blocks", // <-- أضف هذا
-          "AES (Secure)",      // <-- أضف هذا
-          "RSA (Secure)"       // <-- وهذا
-    });
-
-  _algorithmSelector.SelectedIndexChanged += AlgorithmSelector_SelectedIndexChanged;
-
-
-            // Row 0: Fixed height for the algorithm selector
-            _mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            // Row 1: Takes up the remaining 100% of the space
-            _mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-
-            // Define the width of the single column to take all space
-            _mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             _mainLayout.Controls.Add(_contentPanel, 0, 1);
-            // Add the main layout panel to the form's controls collection
-            this.Controls.Add(_mainLayout);
-            topPanel.Controls.Add(selectorLabel);
-            topPanel.Controls.Add(_algorithmSelector);
-            _mainLayout.Controls.Add(topPanel, 0, 0);
-        
 
-    }
+            // --- 6. Footer Panel Setup (with project info) ---
+            var footerLayout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 2,
+                RowCount = 1,
+                BackColor = backColorDark
+            };
+            footerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            footerLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+
+            // Left side of the footer
+            var supervisionPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.TopDown
+            };
+            var supervisorLabel = new Label { Text = "إشراف: م. نادر الحشئي", AutoSize = true, ForeColor = textColorLight };
+            var studentLabel = new Label { Text = "إعداد: م. طارق العمري", AutoSize = true, ForeColor = textColorLight };
+            supervisionPanel.Controls.Add(supervisorLabel);
+            supervisionPanel.Controls.Add(studentLabel);
+
+            // Right side of the footer
+            var universityPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.TopDown,
+                RightToLeft = RightToLeft.Yes // Align text to the right
+            };
+            var universityLabel = new Label { Text = "جامعة إب - علوم حاسوب وتقنية معلومات", AutoSize = true, ForeColor = textColorLight };
+            var yearLabel = new Label { Text = "العام الجامعي: 2025", AutoSize = true, ForeColor = Color.Gray }; // Subtle color for the year
+            universityPanel.Controls.Add(universityLabel);
+            universityPanel.Controls.Add(yearLabel);
+
+            footerLayout.Controls.Add(supervisionPanel, 0, 0);
+            footerLayout.Controls.Add(universityPanel, 1, 0);
+            _mainLayout.Controls.Add(footerLayout, 0, 2);
+
+            // --- 7. Populate ComboBox and set event handler ---
+            _algorithmSelector.Items.AddRange(new string[] {
+                "Caesar Cipher",
+                "Playfair Cipher",
+                "Affine Cipher",
+                "Vigenère Cipher",
+                "Hill Cipher",
+                "Rail Fence Cipher",
+                "Reverse Text",
+                "Columnar Transposition",
+                "Reverse Blocks",
+                "AES (Secure)",
+                "RSA (Secure)",
+                "** Final Project: Crypto Pipeline **"
+            });
+            _algorithmSelector.SelectedIndexChanged += AlgorithmSelector_SelectedIndexChanged;
+
+            // Select the first item by default to show a UI
+            _algorithmSelector.SelectedIndex = 0;
+        }
 
         private void AlgorithmSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -102,61 +150,55 @@ namespace CryptoCourse.WinFormsUI
             if (_algorithmSelector.SelectedItem == null) return;
             string selectedCipher = _algorithmSelector.SelectedItem.ToString();
 
+            // The logic for switching panels remains the same.
             switch (selectedCipher)
             {
                 case "Caesar Cipher":
-                    var caesarPanel = new CaesarPanel();
-                    _contentPanel.Controls.Add(caesarPanel);
+                    _contentPanel.Controls.Add(new CaesarPanel());
                     break;
-
-                // --- ADD THIS NEW CASE ---
                 case "Playfair Cipher":
-                    var playfairPanel = new PlayfairPanel();
-                    _contentPanel.Controls.Add(playfairPanel);
+                    _contentPanel.Controls.Add(new PlayfairPanel());
                     break;
-                // -------------------------
-                //  ---
                 case "Affine Cipher":
-                    var affinePanel = new AffinePanel();
-                    _contentPanel.Controls.Add(affinePanel);
+                    _contentPanel.Controls.Add(new AffinePanel());
                     break;
-
-                // --- ADD THIS NEW CASE ---
+                case "Vigenère Cipher":
+                    _contentPanel.Controls.Add(new VigenerePanel());
+                    break;
                 case "Hill Cipher":
-                    var hillPanel = new HillPanel();
-                    _contentPanel.Controls.Add(hillPanel);
+                    _contentPanel.Controls.Add(new HillPanel());
                     break;
-                // -------------------------
                 case "Rail Fence Cipher":
-                    var railFencePanel = new RailFencePanel();
-                    _contentPanel.Controls.Add(railFencePanel);
+                    _contentPanel.Controls.Add(new RailFencePanel());
                     break;
-                // -------------------------
                 case "Reverse Text":
-                    var reversePanel = new ReverseTextPanel();
-                    _contentPanel.Controls.Add(reversePanel);
+                    _contentPanel.Controls.Add(new ReverseTextPanel());
                     break;
-
                 case "Columnar Transposition":
-                    var columnarPanel = new ColumnarTranspositionPanel();
-                    _contentPanel.Controls.Add(columnarPanel);
+                    _contentPanel.Controls.Add(new ColumnarTranspositionPanel());
                     break;
-
                 case "Reverse Blocks":
-                    var reverseBlocksPanel = new ReverseBlocksPanel();
-                    _contentPanel.Controls.Add(reverseBlocksPanel);
+                    _contentPanel.Controls.Add(new ReverseBlocksPanel());
                     break;
-
                 case "AES (Secure)":
                     _contentPanel.Controls.Add(new AesPanel());
                     break;
-
                 case "RSA (Secure)":
                     _contentPanel.Controls.Add(new RsaPanel());
                     break;
-
+                case "** Final Project: Crypto Pipeline **":
+                    _contentPanel.Controls.Add(new PipelinePanel());
+                    break;
                 default:
-                    _contentPanel.Controls.Add(new Label { Text = $"'{selectedCipher}' لم يتم تنفيذه بعد.", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter });
+                    var notImplementedLabel = new Label
+                    {
+                        Text = $"'{selectedCipher}' لم يتم تنفيذه بعد.",
+                        Dock = DockStyle.Fill,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Font = new Font("Segoe UI", 14F, FontStyle.Italic),
+                        ForeColor = Color.Gray
+                    };
+                    _contentPanel.Controls.Add(notImplementedLabel);
                     break;
             }
         }

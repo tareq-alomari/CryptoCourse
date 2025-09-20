@@ -23,8 +23,8 @@ namespace CryptoCourse.WinFormsUI.Controls
             _keyATextBox = new TextBox { Width = 80 };
             _keyBTextBox = new TextBox { Width = 80 };
             _resultTextBox = new TextBox { Dock = DockStyle.Fill, Multiline = true, ReadOnly = true, BackColor = Color.White };
-            var encryptButton = new Button { Text = "تشفير", Width = 100 };
-            var decryptButton = new Button { Text = "فك التشفير", Width = 100 };
+            var encryptButton = new Button { Text = "تشفير", Width = 100 , Height = 30 };
+            var decryptButton = new Button { Text = "فك التشفير", Width = 100 , Height = 30 };
 
             // Layout arrangement
             var keyPanel = new FlowLayoutPanel { FlowDirection = FlowDirection.LeftToRight, Dock = DockStyle.Fill, WrapContents = false };
